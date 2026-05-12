@@ -11,10 +11,12 @@ import re
 import sys
 import requests
 
+AnønyxMod = "AnønyxMod"
+
 # ========================================================
 # 🔒 [DRX SECURITY & INTEGRITY SYSTEM]
 # ========================================================
-REAL_OWNER = "@AnonyxMod"
+REAL_OWNER = "@AnønyxMod"
 REMOTE_UPDATE_URL = "https://raw.githubusercontent.com/your-repo/master/bgmi" # अपना लिंक यहाँ बदलें
 
 def check_security():
@@ -24,13 +26,19 @@ def check_security():
             return False
     return True
 
+
+def save_key(key, time_val, price_val, ddos_val):
+    with open("key.txt", "a", encoding="utf-8") as f:
+        f.write(f"{key} | Time: {time_val} | Price: {price_val} | DDoS: {ddos_val}\n")
+    print(f"[OK] Key gespeichert: {key}")
+
 def security_error_msg(chat_id):
     error_text = f"❌ <b>𝐒𝐄𝐂𝐔𝐑𝐈𝐓𝐘 𝐀𝐋𝐄𝐑𝐓</b> ❌\n━━━━━━━━━━━━━━━━━━━━━\n⚠️ <b>ERROR:</b> OWNER NAME MODIFIED!\n👤 <b>REAL OWNER:</b> {REAL_OWNER}\n━━━━━━━━━━━━━━━━━━━━━\nबोट की कोडिंग के साथ छेड़छाड़ की गई है।"
     bot.send_message(chat_id, error_text, parse_mode="HTML")
 
 # बोट शुरू होते ही सुरक्षा की जांच करेगा
 if not check_security():
-    print(f"❌ TAMPERING DETECTED! REAL OWNER IS {AnonyxMod}")
+    print(f"❌ TAMPERING DETECTED! REAL OWNER IS {REAL_OWNER}")
     sys.exit(1)
     
 # --- [DEVELOPER FILE LOCK SYSTEM] ---
@@ -63,9 +71,14 @@ admin_id = [str(config['admin_id'])]
 active_attacks = {} 
 user_cooldowns = {}
 user_approval_expiry = {}
+allowed_user_ids = []
 COOLDOWN_TIME = 80 # 80 Seconds ka break
 MAX_SLOTS = 10 # Maximum 10 users hi attack kar sakte hain
 MAINTENANCE_MODE = False  # By default off rahega
+
+# File constants
+KEY_FILE = "key.txt"
+USER_FILE = "users.txt"
 
 # --- [AUTOMATIC FILE INITIALIZATION] ---
 FILES = {
@@ -90,6 +103,11 @@ def log_redeem_details(user_id, key):
     # यूजर और उसकी की का मैप बनाना
     with open("userdetailskey.txt", "a") as f:
         f.write(f"UserID: {user_id} <-> ActiveKey: {key}\n")
+
+def generate_key_str():
+    """Generate a random key string"""
+    characters = string.ascii_letters + string.digits
+    return ''.join(random.choice(characters) for _ in range(16))
         
 # --- HELPER FUNCTIONS ---
 def run_attack_process(chat_id, target, port, duration, threads):
