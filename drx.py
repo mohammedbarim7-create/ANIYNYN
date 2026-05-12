@@ -107,7 +107,7 @@ def run_attack_process(chat_id, target, port, duration, threads):
         user_cooldowns[str(chat_id)] = time.time()
         
         finished_text = (
-            f"✅ <b>𝐀𝐓𝐓𝐀𝐂𝐊 𝐅𝐈𝐍𝐈𝐒𝐇𝐄𝐃 𝐒𝐔𝐂𝐂𝐄𝐒𝐒𝐅𝐔𝐋𝐋𝐘</b>\n"
+            f"✅ <b>SPLASH DONE</b>\n"
             f"━━━━━━━━━━━━━━━━━━━━━━\n"
             f"📍 <b>𝐓𝐚𝐫𝐠𝐞𝐭:</b> <code>{target}</code>\n"
             f"🔌 <b>𝐏𝐨𝐫𝐭:</b> <code>{port}</code>\n"
@@ -150,7 +150,7 @@ def welcome_start(message):
 @bot.message_handler(commands=['help'])
 def show_help(message):
     if not check_security(): security_error_msg(message.chat.id); return
-    help_text = f"🌟 <b>𝗔𝗡𝗢𝗡𝗬 𝗛𝗘𝗟𝗣 𝗠𝗘𝗡𝗨</b> 🌟\n━━━━━━━━━━━━━━━━━━━━━━\n"
+    help_text = f"🌟 <b>TEAM BOUNTY HELP MENU</b> 🌟\n━━━━━━━━━━━━━━━━━━━━━━\n"
     help_text += "/bgmi - Attack\n/status - Live\n/plan - Price\n/redeem - Key\n/myinfo - Stats\n"
     if str(message.chat.id) in admin_id:
         help_text += "\n👑 <b>ADMIN:</b>\n/genkey, /broadcast, /maintenance, /update, /add, /remove"
@@ -198,7 +198,7 @@ def show_my_info(message):
                 f"💎 <b>𝐏𝐥𝐚𝐧 𝐓𝐲𝐩𝐞:</b> {plan_type}\n"
                 f"⏳ <b>𝐑𝐞𝐦𝐚𝐢𝐧𝐢𝐧𝐠 𝐓𝐢𝐦𝐞:</b> {expiry}\n"
                 f"━━━━━━━━━━━━━━━━━━━━━━\n"
-                f"🚀 <b>𝐏𝐨𝐰𝐞𝐫:</b> 𝗔𝗡𝗢𝗡𝗬 𝗗𝗗𝗢𝗦 𝗣𝗢𝗪𝗘𝗥 🔥"
+                f"🚀 <b>𝐏𝐨𝐰𝐞𝐫:</b> TEAM BOUNTY POWER"
             )
 
             try:
@@ -252,7 +252,7 @@ def handle_bgmi(message):
     
     # --- [STEP 1] MAINTENANCE CHECK ---
     if MAINTENANCE_MODE and user_id not in admin_id:
-        bot.reply_to(message, "🛠️ <b>𝐁𝐎𝐓 𝐔𝐍𝐃𝐄𝐑 𝐌𝐀𝐈𝐍𝐓𝐄𝐍𝐀𝐍𝐂𝐄</b>\n\n𝗠𝗮𝗶𝗻𝘁𝗲𝗻𝗮𝗻𝗰𝗲 𝗶𝗻 𝗽𝗿𝗼𝗴𝗿𝗲𝘀𝘀 𝗽𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗮𝗴𝗮𝗶𝗻 𝗹𝗮𝘁𝗲𝗿. 🚀", parse_mode="HTML")
+        bot.reply_to(message, "🛠️ <b>𝐁𝐎𝐓 IS DEAD</b>\n\n𝗠𝗮𝗶𝗻𝘁𝗲𝗻𝗮𝗻𝗰𝗲 𝗶𝗻 𝗽𝗿𝗼𝗴𝗿𝗲𝘀𝘀 𝗽𝗹𝗲𝗮𝘀𝗲 𝘁𝗿𝘆 𝗮𝗴𝗮𝗶𝗻 𝗹𝗮𝘁𝗲𝗿. 🚀", parse_mode="HTML")
         return
         
     # --- [STEP 2] PLAN CHECK ---
@@ -332,7 +332,7 @@ def handle_bgmi(message):
         f"⏳ <b>𝐓𝐢𝐦𝐞:</b> <code>{time_duration}s</code>\n"
         f"📊 <b>𝐒𝐥𝐨𝐭𝐬:</b> {slots_used}/{MAX_SLOTS} (Left: {slots_left})\n"
         f"━━━━━━━━━━━━━━━━━━━━━━\n"
-        f"🚀 <b>𝐏𝐨𝐰𝐞𝐫:</b> 𝗔𝗡𝗢𝗡𝗬 𝗗𝗗𝗢𝗦 𝗣𝗢𝗪𝗘𝗥 🔥"
+        f"🚀 <b>𝐏𝐨𝐰𝐞𝐫:</b> TEAM BOUNTY POWER"
     ), parse_mode="HTML")
 
     # Background thread for execution and finished message
