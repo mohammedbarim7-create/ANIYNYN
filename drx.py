@@ -354,7 +354,7 @@ def handle_bgmi(message):
     ), parse_mode="HTML")
 
     # Background thread for execution and finished message
-    threading.Thread(target=run_attack, args=(message.chat.id, target, port, time_duration)).start()
+    threading.Thread(target=run_attack_process, args=(message.chat.id, target, port, time_duration, 1)).start()
 # --- ADMIN & REDEEM COMMANDS ---
 
 @bot.message_handler(commands=['genkey'])
