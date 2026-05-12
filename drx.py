@@ -17,7 +17,7 @@ AnønyxMod = "AnønyxMod"
 # 🔒 [DRX SECURITY & INTEGRITY SYSTEM]
 # ========================================================
 REAL_OWNER = "@AnønyxMod"
-REMOTE_UPDATE_URL = "https://raw.githubusercontent.com/your-repo/master/bgmi" # अपना लिंक यहाँ बदलें
+REMOTE_UPDATE_URL = "https://raw.githubusercontent.com/mohammedbarim7-create/ANIYNYN/refs/heads/main/drx.py" # अपना लिंक यहाँ बदलें
 
 def check_security():
     with open(__file__, 'r') as f:
